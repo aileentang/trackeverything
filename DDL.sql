@@ -21,7 +21,8 @@ CREATE OR REPLACE TABLE Users(
 -- Dumping data for table `Users`
 --
 
-INSERT INTO Users (name, email) VALUES 
+INSERT INTO Users (name, email)
+VALUES 
     ( "Momo", "babygirlmomo@gmail.com"),
     ("Aileen", "tangai@oregonstate.edu"),
     ("Catherine", "catherine@hello.com"),
@@ -38,7 +39,7 @@ CREATE OR REPLACE TABLE Tasks(
     userID INT(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
-    deadline TIMESTAMP(6) NOT NULL,
+    deadline DATETIME(0) NOT NULL,
     priorityLevel ENUM("Optional", "Low", "Medium", "High", "Critical"),
     FOREIGN KEY (userID) REFERENCES Users(userID)
     ON DELETE CASCADE,
@@ -50,7 +51,8 @@ CREATE OR REPLACE TABLE Tasks(
 -- Dumping data for table `Tasks`
 --
 
-INSERT INTO Tasks (userID, name, description, deadline, priorityLevel) VALUES 
+INSERT INTO Tasks (userID, name, description, deadline, priorityLevel)
+VALUES 
     (2, "Project Draft 1", "Step 1 draft", "2023-03-07 11:59:59", "Low" ),
     (2, "Quiz 1", "Relational DB and design", "2023-02-13 11:59:59", "Low" ),
     (2, "Assignment 1", "Set up database", "2023/03/19 11:59:59", "Medium" ),
@@ -80,7 +82,8 @@ CREATE OR REPLACE TABLE Categories(
 -- Dumping data for table `Categories`
 --
 
-INSERT INTO Categories ( name, description ) VALUES 
+INSERT INTO Categories ( name, description ) 
+VALUES 
     ( "project", "Group project for class" ), 
     ( "quiz", "Graded quizzes" ), 
     ( "assignment", "Assignments for class" );
@@ -94,7 +97,7 @@ CREATE OR REPLACE TABLE Subtasks(
     taskID INT(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
-    deadline TIMESTAMP(6) NOT NULL,
+    deadline DATETIME(0) NOT NULL,
     priorityLevel ENUM("Optional", "Low", "Medium", "High", "Critical"),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
@@ -105,7 +108,8 @@ CREATE OR REPLACE TABLE Subtasks(
 --
 -- Dumping data for table `Subtasks`
 --
-INSERT INTO Subtasks ( taskID, name, description, priorityLevel, deadline ) VALUES 
+INSERT INTO Subtasks ( taskID, name, description, priorityLevel, deadline ) 
+VALUES 
     (2, "Read Lecture", "Three lectures to read", "Medium", "2023/03/05 11:59:59" ), 
     (4, "Buy New Clothes", "clothes need to match", NULL, "2023/03/15 11:59:59" ), 
     (6, "Check Statement", "Make sure purchases are correct", NULL, "2023/02/10 11:59:59" ), 
@@ -119,7 +123,7 @@ INSERT INTO Subtasks ( taskID, name, description, priorityLevel, deadline ) VALU
 --
 
 CREATE OR REPLACE TABLE Teammates(
-    teammateID NOT NULL AUTO_INCREMENT,
+    teammateID INT(20) NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(100),
     phone VARCHAR(12),
@@ -131,7 +135,8 @@ CREATE OR REPLACE TABLE Teammates(
 -- Dumping data for table `Teammates`
 --
 
-INSERT INTO Teammates ( name, email, phone ) VALUES 
+INSERT INTO Teammates ( name, email, phone ) 
+VALUES 
     ( "Jacob", "jacob@gmail.com", "3104356709" ), 
     ( "John", "john@gmail.com", "6267809120" ), 
     ( "Ashley", "ashley@gmail.com", "6577083415" ), 
@@ -139,10 +144,10 @@ INSERT INTO Teammates ( name, email, phone ) VALUES
     ( "Jennifer", "jennifer@gmail.com", "6344504000" );
 
 --
--- Table structure for table `TaskAndTeammates`
+-- Table structure for table `taskAndTeammates`
 --
 
-CREATE OR REPLACE TABLE TaskAndTeammates(
+CREATE OR REPLACE TABLE taskAndTeammates(
     taskID int,
     teammateID int,
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
@@ -153,20 +158,21 @@ CREATE OR REPLACE TABLE TaskAndTeammates(
 );
 
 --
--- Dumping data for table `TaskAndTeammates`
+-- Dumping data for table `taskAndTeammates`
 --
 
-INSERT INTO TaskAndTeammates ( taskID, teammateID ) VALUES 
+INSERT INTO taskAndTeammates ( taskID, teammateID ) 
+VALUES 
     (1, 5), 
     (2, 2), 
     (2, 3), 
     (2, 5);
 
 --
--- Table structure for table `SubtaskAndTeammates`
+-- Table structure for table `subtaskAndTeammates`
 --
 
-CREATE OR REPLACE TABLE SubtaskAndTeammates(
+CREATE OR REPLACE TABLE subtaskAndTeammates(
     subtaskID int,
     teammateID int,
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -177,20 +183,21 @@ CREATE OR REPLACE TABLE SubtaskAndTeammates(
 );
 
 --
--- Dumping data for table `SubtaskAndTeammates`
+-- Dumping data for table `subtaskAndTeammates`
 --
 
-INSERT INTO SubtaskAndTeammates ( subtaskID, teammateID ) VALUES 
+INSERT INTO subtaskAndTeammates ( subtaskID, teammateID ) 
+VALUES 
     (1, 1), 
     (2, 1), 
     (3, 1), 
     (3, 2);
 
 --
--- Table structure for table `TaskAndCategories`
+-- Table structure for table `taskAndCategories`
 --
 
-CREATE OR REPLACE TABLE TaskAndCategories(
+CREATE OR REPLACE TABLE taskAndCategories(
     taskID int,
     categoryID int,
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
@@ -201,20 +208,21 @@ CREATE OR REPLACE TABLE TaskAndCategories(
 );
 
 --
--- Dumping data for table `TaskAndCategories`
+-- Dumping data for table `taskAndCategories`
 --
 
-INSERT INTO TaskAndCategories ( taskID, categoryID ) VALUES 
+INSERT INTO taskAndCategories ( taskID, categoryID ) 
+VALUES 
     (1, 1), 
     (1, 2), 
     (2, 2), 
     (3, 2);
 
 --
--- Table structure for table `SubtaskAndCategories`
+-- Table structure for table `subtaskAndCategories`
 --
 
-CREATE OR REPLACE TABLE SubtaskAndCategories(
+CREATE OR REPLACE TABLE subtaskAndCategories(
     subtaskID int,
     categoryID int,
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -225,10 +233,11 @@ CREATE OR REPLACE TABLE SubtaskAndCategories(
 );
 
 --
--- Dumping data for table `SubtaskAndCategories`
+-- Dumping data for table `subtaskAndCategories`
 --
 
-INSERT INTO SubtaskAndCategories ( subtaskID, categoryID ) VALUES 
+INSERT INTO subtaskAndCategories ( subtaskID, categoryID ) 
+VALUES 
     (1, 1), 
     (1, 2), 
     (2, 2), 
