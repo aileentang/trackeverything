@@ -38,7 +38,7 @@ CREATE OR REPLACE TABLE Tasks(
     userID INT(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
-    deadline TIMESTAMP(6) NOT NULL,
+    deadline DATETIME(0) NOT NULL,
     priorityLevel ENUM("Optional", "Low", "Medium", "High", "Critical"),
     FOREIGN KEY (userID) REFERENCES Users(userID)
     ON DELETE CASCADE,
@@ -94,7 +94,7 @@ CREATE OR REPLACE TABLE Subtasks(
     taskID INT(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
-    deadline TIMESTAMP(6) NOT NULL,
+    deadline DATETIME(0) NOT NULL,
     priorityLevel ENUM("Optional", "Low", "Medium", "High", "Critical"),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
