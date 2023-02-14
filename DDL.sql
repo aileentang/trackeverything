@@ -143,8 +143,8 @@ INSERT INTO Teammates ( name, email, phone ) VALUES
 --
 
 CREATE OR REPLACE TABLE TaskAndTeammates(
-    taskID int,
-    teammateID int,
+    taskID INT(20),
+    teammateID INT(20),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
     FOREIGN KEY (teammateID) REFERENCES Teammates(teammateID)
@@ -167,8 +167,8 @@ INSERT INTO TaskAndTeammates ( taskID, teammateID ) VALUES
 --
 
 CREATE OR REPLACE TABLE SubtaskAndTeammates(
-    subtaskID int,
-    teammateID int,
+    subtaskID INT(20),
+    teammateID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
     ON DELETE CASCADE,
     FOREIGN KEY (teammateID) REFERENCES Teammates(teammateID)
@@ -191,8 +191,8 @@ INSERT INTO SubtaskAndTeammates ( subtaskID, teammateID ) VALUES
 --
 
 CREATE OR REPLACE TABLE TaskAndCategories(
-    taskID int,
-    categoryID int,
+    taskID INT(20),
+    categoryID INT(20),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
     FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
@@ -215,8 +215,8 @@ INSERT INTO TaskAndCategories ( taskID, categoryID ) VALUES
 --
 
 CREATE OR REPLACE TABLE SubtaskAndCategories(
-    subtaskID int,
-    categoryID int,
+    subtaskID INT(20),
+    categoryID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
     ON DELETE CASCADE,
     FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
