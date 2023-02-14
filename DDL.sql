@@ -123,7 +123,10 @@ VALUES
 --
 
 CREATE OR REPLACE TABLE Teammates(
-    teammateID INT(20) NOT NULL AUTO_INCREMENT,
+    teammateID 
+    
+    
+    NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(100),
     phone VARCHAR(12),
@@ -147,7 +150,7 @@ VALUES
 -- Table structure for table `taskAndTeammates`
 --
 
-CREATE OR REPLACE TABLE taskAndTeammates(
+CREATE OR REPLACE TABLE TaskAndTeammates(
     taskID int,
     teammateID int,
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
@@ -158,10 +161,10 @@ CREATE OR REPLACE TABLE taskAndTeammates(
 );
 
 --
--- Dumping data for table `taskAndTeammates`
+-- Dumping data for table `TaskAndTeammates`
 --
 
-INSERT INTO taskAndTeammates ( taskID, teammateID ) 
+INSERT INTO TaskAndTeammates ( taskID, teammateID ) 
 VALUES 
     (1, 5), 
     (2, 2), 
@@ -169,10 +172,10 @@ VALUES
     (2, 5);
 
 --
--- Table structure for table `subtaskAndTeammates`
+-- Table structure for table `SubtaskAndTeammates`
 --
 
-CREATE OR REPLACE TABLE subtaskAndTeammates(
+CREATE OR REPLACE TABLE SubtaskAndTeammates(
     subtaskID int,
     teammateID int,
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -183,10 +186,10 @@ CREATE OR REPLACE TABLE subtaskAndTeammates(
 );
 
 --
--- Dumping data for table `subtaskAndTeammates`
+-- Dumping data for table `SubtaskAndTeammates`
 --
 
-INSERT INTO subtaskAndTeammates ( subtaskID, teammateID ) 
+INSERT INTO SubtaskAndTeammates ( subtaskID, teammateID ) 
 VALUES 
     (1, 1), 
     (2, 1), 
@@ -194,10 +197,10 @@ VALUES
     (3, 2);
 
 --
--- Table structure for table `taskAndCategories`
+-- Table structure for table `TaskAndCategories`
 --
 
-CREATE OR REPLACE TABLE taskAndCategories(
+CREATE OR REPLACE TABLE TaskAndCategories(
     taskID int,
     categoryID int,
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
@@ -208,7 +211,7 @@ CREATE OR REPLACE TABLE taskAndCategories(
 );
 
 --
--- Dumping data for table `taskAndCategories`
+-- Dumping data for table `TaskAndCategories`
 --
 
 INSERT INTO taskAndCategories ( taskID, categoryID ) 
@@ -219,10 +222,10 @@ VALUES
     (3, 2);
 
 --
--- Table structure for table `subtaskAndCategories`
+-- Table structure for table `SubtaskAndCategories`
 --
 
-CREATE OR REPLACE TABLE subtaskAndCategories(
+CREATE OR REPLACE TABLE SubtaskAndCategories(
     subtaskID int,
     categoryID int,
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -233,7 +236,7 @@ CREATE OR REPLACE TABLE subtaskAndCategories(
 );
 
 --
--- Dumping data for table `subtaskAndCategories`
+-- Dumping data for table `SubtaskAndCategories`
 --
 
 INSERT INTO subtaskAndCategories ( subtaskID, categoryID ) 
