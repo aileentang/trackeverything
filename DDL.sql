@@ -119,10 +119,7 @@ INSERT INTO Subtasks ( taskID, name, description, priorityLevel, deadline ) VALU
 --
 
 CREATE OR REPLACE TABLE Teammates(
-    teammateID 
-    
-    
-    NOT NULL AUTO_INCREMENT,
+    teammateID NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(100),
     phone VARCHAR(12),
@@ -142,7 +139,7 @@ INSERT INTO Teammates ( name, email, phone ) VALUES
     ( "Jennifer", "jennifer@gmail.com", "6344504000" );
 
 --
--- Table structure for table `taskAndTeammates`
+-- Table structure for table `TaskAndTeammates`
 --
 
 CREATE OR REPLACE TABLE TaskAndTeammates(
@@ -207,7 +204,7 @@ CREATE OR REPLACE TABLE TaskAndCategories(
 -- Dumping data for table `TaskAndCategories`
 --
 
-INSERT INTO taskAndCategories ( taskID, categoryID ) VALUES 
+INSERT INTO TaskAndCategories ( taskID, categoryID ) VALUES 
     (1, 1), 
     (1, 2), 
     (2, 2), 
@@ -231,7 +228,7 @@ CREATE OR REPLACE TABLE SubtaskAndCategories(
 -- Dumping data for table `SubtaskAndCategories`
 --
 
-INSERT INTO subtaskAndCategories ( subtaskID, categoryID ) VALUES 
+INSERT INTO SubtaskAndCategories ( subtaskID, categoryID ) VALUES 
     (1, 1), 
     (1, 2), 
     (2, 2), 
