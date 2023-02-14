@@ -119,7 +119,7 @@ INSERT INTO Subtasks ( taskID, name, description, priorityLevel, deadline ) VALU
 --
 
 CREATE OR REPLACE TABLE Teammates(
-    teammateID NOT NULL AUTO_INCREMENT,
+    teammateID INT(20) NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(100),
     phone VARCHAR(12),
