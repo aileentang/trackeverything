@@ -40,9 +40,9 @@
         document.getElementById('delete').style.display = 'none';
       }
     }
-    function newPerson() { showform('insert'); }
-    function updatePerson(pid) { showform('update'); }
-    function deletePerson(pid) { showform('delete'); }
+    function newTask() { showform('insert'); }
+    function updateTask(tid) { showform('update'); }
+    function deleteTask(tid) { showform('delete'); }
     function browseTasks() { showform('browse'); }
     function showAll() { showform('all'); }
   </script>
@@ -51,78 +51,97 @@
 <body onload="browseTasks()">
   <h1>Tasks</h1>
 
-  [ <a href="tasks.html">Tasks</a> | <a href="planets.html">Planets</a> | Users | Teammates ]
+  [ <a href="index.html">Tasks</a> | <a href="planets.html">Planets</a> | Users | Teammates ]
 
   <div id="browse">
     <p><a href="#" onClick="showAll()">Display all forms</a> </p>
     <table border="1" cellpadding="5">
       <tr>
-        <th><a href="#" onClick="newPerson()">New</a></th>
+        <th><a href="#" onClick="newTask()">New</a></th>
         <th></th>
         <th>taskID</th>
         <th>userID</th>
         <th>name</th>
         <th>description</th>
         <th>deadline</th>
-        <th>PriorityLevel</th>
+        <th>priorityLevel</th>
       </tr>
       <tr>
-        <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-        <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
+        <td><a href="#" onClick="updateTask('this.taskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTask('this.taskID')">Delete</a></td>
         <td align="right">1</td>
-        <td>William</td>
-        <td align="right">Adama</td>
-        <td>Caprica</td>
-        <td>61</td>
+        <td>2</td>
+        <td align="right">Project Draft 1</td>
+        <td>Step 1 Draft</td>
+        <td>2023-03-07 11:59:59</td>
         <td>Low</td>
       </tr>
       <tr>
-        <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-        <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
+        <td><a href="#" onClick="updateTask('this.taskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTask('this.taskID')">Delete</a></td>
         <td align="right">2</td>
-        <td>Lee</td>
-        <td align="right">Adama</td>
-        <td>Caprica</td>
-        <td>30</td>
+        <td>2</td>
+        <td align="right">Quiz 1</td>
+        <td>Relational DB & design</td>
+        <td>2023-03-13 11:59:59</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateTask('this.taskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTask('this.taskID')">Delete</a></td>
+        <td align="right">3</td>
+        <td>1</td>
+        <td align="right">Beach walk</td>
+        <td>Get some sandy paws</td>
+        <td>2023-03-20 11:59:59</td>
         <td>Low</td>
       </tr>
       <tr>
-        <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-        <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
-        <td align="right">3</td>
-        <td>Laura</td>
-        <td align="right">Roslin</td>
-        <td>Caprica</td>
-        <td><em>NULL</em></td>
-        <td>Medium</td>
+        <td><a href="#" onClick="updateTask('this.taskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTask('this.taskID')">Delete</a></td>
+        <td align="right">4</td>
+        <td>3</td>
+        <td align="right">Chase Sapphire Bill</td>
+        <td>Pay credit card bill</td>
+        <td>2023-02-15 11:59:59</td>
+        <td>NULL</td>
       </tr>
     </table>
     <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert">
     <form method="POST" id="addPlanet">
-      <legend><strong>Add Person</strong></legend>
+      <legend><strong>Add Task</strong></legend>
       <fieldset class="fields">
-        <label> first name </label> <input type="text" name="fname">
-        <label> last name </label> <input type="text" name="lname">
-        <label> Homeworld </label> <select name="homeworld">
+        <label> User </label> <select name="homeworld">
           <option value="0">&nbsp;</option>
-          <option value="1">Gemenon</option>
-          <option value="2">Leonis</option>
-          <option value="3">Caprica</option>
+          <option value="1">Momo</option>
+          <option value="2">Aileen</option>
+          <option value="3">Catherine</option>
+          <option value="4">Jennifer</option>
         </select>
-        <label> age </label> <input type="text" name="age">
+        <label> name </label> <input type="text" name="name">
+        <label> description </label> <input type="text" name="description">
+        <label> deadline </label> <input type="text" name="deadline">
+        <label> priorityLevel </label> <select name="priorityLevel">
+          <option value="0">&nbsp;</option>
+          <option value="1">Optional</option>
+          <option value="2">Low</option>
+          <option value="3">Medium</option>
+          <option value="4">High</option>
+          <option value="5">Critical</option>
+        </select>
       </fieldset>
-      <input class="btn" type="submit" id="addPerson" value="Add Person">
+      <input class="btn" type="submit" id="addTask" value="Add Task">
       <input class="btn" type="button" value="cancel" onClick="browseTasks()">
     </form>
   </div><!-- insert -->
   <p>&nbsp;</p>
   <div id="update">
-    <form method="POST" id="UpdatePerson">
-      <legend><strong>Update Person</strong></legend>
+    <form method="POST" id="UpdateTask">
+      <legend><strong>Update Task</strong></legend>
       <fieldset class="fields">
-        <input type="hidden" name="personID" id="updatepersonID" value="1">
+        <input type="hidden" name="taskID" id="updatetaskID" value="1">
         <label> ID: </label> 1
         <label> first name </label> <input type="text" name="fname" value="William">
         <label> last name </label> <input type="text" name="lname" value="Adama">
@@ -134,22 +153,22 @@
         </select>
         <label> age </label> <input type="text" name="age" value="61">
       </fieldset>
-      <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
+      <input class="btn" type="submit" id="UpdateSaveTask" value="Save Update Task">
       <input class="btn" type="button" value="cancel" onClick="browseTasks()">
     </form>
   </div><!-- update -->
   <p>&nbsp;</p>
   <div id="delete" style="display: block">
-    <form method="POST" id="deletePerson">
-      <legend><strong>Delete Person</strong></legend>
+    <form method="POST" id="deleteTask">
+      <legend><strong>Delete Task</strong></legend>
       <fieldset class="fields">
         <p>Are you sure you wish to delete the following?</p>
-        <input type="hidden" name="personID" id="deletepersonID" value="1">
+        <input type="hidden" name="taskID" id="deletetaskID" value="1">
         <label><strong>ID:</strong></label> 1
         <label> <strong>Name</strong> </label> William Adama
 
       </fieldset>
-      <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
+      <input class="btn" type="submit" id="DeleteTask" value="Delete Task">
       <input class="btn" type="button" value="cancel" onClick="browseTasks()">
     </form>
   </div><!-- delete -->
