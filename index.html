@@ -51,7 +51,7 @@
 <body onload="browseTasks()">
   <h1>Tasks</h1>
 
-  [ <a href="index.html">Tasks</a> | <a href="planets.html">Planets</a> | Users | Teammates ]
+  [ <a href="index.html">Tasks</a> | <a href="users.html">Users</a> | Categories | Subtasks | Teammates ]
 
   <div id="browse">
     <p><a href="#" onClick="showAll()">Display all forms</a> </p>
@@ -72,7 +72,7 @@
         <td align="right">1</td>
         <td>2</td>
         <td align="right">Project Draft 1</td>
-        <td>Step 1 Draft</td>
+        <td>Step 1 draft</td>
         <td>2023-03-07 11:59:59</td>
         <td>Low</td>
       </tr>
@@ -91,7 +91,7 @@
         <td><a href="#" onclick="deleteTask('this.taskID')">Delete</a></td>
         <td align="right">3</td>
         <td>1</td>
-        <td align="right">Beach walk</td>
+        <td align="right">Beach Walk</td>
         <td>Get some sandy paws</td>
         <td>2023-03-20 11:59:59</td>
         <td>Low</td>
@@ -110,10 +110,10 @@
     <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert">
-    <form method="POST" id="addPlanet">
+    <form method="POST" id="addTask">
       <legend><strong>Add Task</strong></legend>
       <fieldset class="fields">
-        <label> User </label> <select name="homeworld">
+        <label> User </label> <select name="user">
           <option value="0">&nbsp;</option>
           <option value="1">Momo</option>
           <option value="2">Aileen</option>
@@ -142,16 +142,18 @@
       <legend><strong>Update Task</strong></legend>
       <fieldset class="fields">
         <input type="hidden" name="taskID" id="updatetaskID" value="1">
-        <label> ID: </label> 1
-        <label> first name </label> <input type="text" name="fname" value="William">
-        <label> last name </label> <input type="text" name="lname" value="Adama">
-        <label> Homeworld </label> <select name="homeworld">
+        <label> userID: </label> 1
+        <label> name </label> <input type="text" name="name" value="Project Draft 1">
+        <label> description </label> <input type="text" name="description" value="Step 1 draft">
+        <label> deadline </label> <input type="text" name="deadline" value="2023-03-07 11:59:59">
+        <label> priorityLevel </label> <select name="priorityLevel">
           <option value="0">&nbsp;</option>
-          <option value="1" selected>Gemenon</option>
-          <option value="2">Leonis</option>
-          <option value="3">Caprica</option>
+          <option value="1" >Optional</option>
+          <option value="2" selected>Low</option>
+          <option value="3">Medium</option>
+          <option value="4">High</option>
+          <option value="5">Critical</option>
         </select>
-        <label> age </label> <input type="text" name="age" value="61">
       </fieldset>
       <input class="btn" type="submit" id="UpdateSaveTask" value="Save Update Task">
       <input class="btn" type="button" value="cancel" onClick="browseTasks()">
@@ -164,8 +166,8 @@
       <fieldset class="fields">
         <p>Are you sure you wish to delete the following?</p>
         <input type="hidden" name="taskID" id="deletetaskID" value="1">
-        <label><strong>ID:</strong></label> 1
-        <label> <strong>Name</strong> </label> William Adama
+        <label><strong>userID:</strong></label> 1
+        <label> <strong>name</strong> </label> Project Draft 1
 
       </fieldset>
       <input class="btn" type="submit" id="DeleteTask" value="Delete Task">
