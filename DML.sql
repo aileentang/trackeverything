@@ -4,16 +4,14 @@
 -- get all users to populate User dropdown
 SELECT userID, name FROM Users;
 
--- get all task IDs, users, task names, descriptions, deadlines and priority levels for Tasks page
-SELECT Tasks.taskID, Users.name AS userID, name, description, deadline, priorityLevel
-    FROM Tasks
-        INNER JOIN Users
-        ON userID = Users.userID;
+-- get all tasks and user's names for List Tasks page
+SELECT taskID, Users.name AS userID, Tasks.name, description, deadline, priorityLevel FROM Tasks
+INNER JOIN Users ON Tasks.userID = Users.userID
+ORDER BY taskID;
 
 -- get a single task's data for the Update Task form
-SELECT taskID, userID, name, description, deadline, priorityLevel
-    FROM Tasks
-    WHERE taskID = :task_ID_selected;
+SELECT taskID, userID, name, description, deadline, priorityLevel FROM Tasks
+WHERE taskID = :task_ID_selected;
 
 -- add a new task
 INSERT INTO Tasks (name, description, deadline, priorityLevel) VALUES
