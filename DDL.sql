@@ -234,15 +234,5 @@ INSERT INTO SubtaskAndCategories ( subtaskID, categoryID ) VALUES
     (2, 2), 
     (3, 2);
 
-SELECT * FROM Users;
-SELECT * FROM Tasks;
-SELECT * FROM Categories;
-SELECT * FROM Subtasks;
-SELECT * FROM Teammates;
-SELECT * FROM TaskAndTeammates;
-SELECT * FROM SubtaskAndTeammates;
-SELECT * FROM TaskAndCategories;
-SELECT * FROM SubtaskAndCategories;
-
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
