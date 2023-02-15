@@ -1,0 +1,94 @@
+<html>
+
+<head>
+  <title>Track Everything</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Teammates</h1>
+
+  [ <a href="index.html">Tasks</a> | <a href="users.html">Users</a> | <a href="categories.html">Categories</a> | <a href="subtasks.html">Subtasks</a> | <a href="teammates.html">Teammates</a> ]
+  <div id="browse" style="display: block">
+    <p><strong>Browse Teammates</strong></p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#">New</a></th>
+        <th></th>
+        <th>teammateID</th>
+        <th>name</th>
+        <th>email</th>
+        <th>phone</th>
+      </tr>
+      <tr>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+        <td align="right">1</td>
+        <td>Jacob</td>
+        <td align="right">jacob@gmail.com</td>
+        <td>310-435-6709</td>
+      </tr>
+      <tr>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+        <td align="right">2</td>
+        <td>John</td>
+        <td align="right">john@gmail.com</td>
+        <td>626-780-9120</td>
+      </tr>
+      <tr>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+        <td align="right">3</td>
+        <td>Ashley</td>
+        <td align="right">ashley@gmail.com</td>
+        <td>657-708-3415</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+  </div> <!-- browse -->
+  <div id="insert" style="display: block">
+    <form id="addTeammate">
+      <legend><strong>Add Teammate</strong></legend>
+      <fieldset class="fields">
+        <label> name </label> <input type="text" name="name">
+        <label> email </label> <input type="text" name="email">
+        <label> phone </label> <input type="text" name="phone">
+      </fieldset>
+      <input class="btn" type="submit" id="addTeammate" value="Add a Teammate">
+      <input class="btn" type="button" value="cancel">
+    </form>
+    <!--add new teammate-->
+  </div><!-- insert -->
+
+  <p>&nbsp;</p>
+  <div id="update" style="display: block">
+    <form id="updateTeammate">
+      <legend><strong>Update Teammate</strong></legend>
+      <fieldset class="fields">
+        <label>ID:</label> 1
+        <label> name </label> <input type="text" value="Jacob" name="name">
+        <label> email </label> <input type="text" name="email" value="jacob@gmail.com">
+        <label> phone </label> <input type="text" name="phone" value="310-435-6709">
+      </fieldset>
+      <input class="btn" type="submit" id="UpdateSaveTeammate" value="Save Update Teammate">
+      <input class="btn" type="button" value="cancel">
+    </form>
+  </div><!-- update -->
+  <p>&nbsp;</p>
+  <div id="delete" style="display: block">
+    <form id="deleteTeammate">
+      <legend><strong>Delete Teammate</strong></legend>
+      <fieldset class="fields">
+        <p>Are you sure you wish to delete the following?</p>
+        <label><strong>ID:</strong></label> 1
+        <label><strong> name </strong></label> Jacob
+
+      </fieldset>
+      <input class="btn" type="submit" id="DeleteTeammate" value="Delete Teammate">
+      <input class="btn" type="button" value="cancel">
+    </form>
+  </div><!-- delete -->
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<html>
+
+<head>
+  <title>Track Everything</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script language="JavaScript">
+    function showform(dowhat) {
+      /*
+      * four DIVS: browse, insert, update, delete
+      * this function sets one visible the others not
+      */
+      if (dowhat == 'insert') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'update') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'delete') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else if (dowhat == 'all') {
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else { //by default display browse
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+    }
+    function newSubtask() { showform('insert'); }
+    function updateSubtask(tid) { showform('update'); }
+    function deleteTask(tid) { showform('delete'); }
+    function browseSubtasks() { showform('browse'); }
+    function showAll() { showform('all'); }
+  </script>
+</head>
+
+<body onload="browseSubtasks()">
+  <h1>Subtasks</h1>
+
+  [ <a href="index.html">Tasks</a> | <a href="users.html">Users</a> | <a href="categories.html">Categories</a> | <a href="subtasks.html">Subtasks</a> | <a href="teammates.html">Teammates</a> ]
+
+  <div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newSubtask()">New</a></th>
+        <th></th>
+        <th>subtaskID</th>
+        <th>taskID</th>
+        <th>name</th>
+        <th>description</th>
+        <th>deadline</th>
+        <th>priorityLevel</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateSubtask('this.subtaskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteSubtask('this.subtaskID')">Delete</a></td>
+        <td align="right">1</td>
+        <td>2</td>
+        <td align="right">Read module 1</td>
+        <td>NULL</td>
+        <td>2023-03-05 11:59:59</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateSubtask('this.subtaskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteSubtask('this.subtaskID')">Delete</a></td>
+        <td align="right">2</td>
+        <td>4</td>
+        <td align="right">Check statement</td>
+        <td>Make sure purchases are correct</td>
+        <td>2023-02-10 11:59:59</td>
+        <td>NULL</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateSubtask('this.subtaskID')">Edit</a></td>
+        <td><a href="#" onclick="deleteSubtask('this.subtaskID')">Delete</a></td>
+        <td align="right">3</td>
+        <td>2</td>
+        <td align="right">Read module 2</td>
+        <td>NULL</td>
+        <td>2023-03-06 11:59:59</td>
+        <td>NULL</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+  </div> <!-- browse -->
+  <div id="insert">
+    <form method="POST" id="addSubtask">
+      <legend><strong>Add Subtask</strong></legend>
+      <fieldset class="fields">
+        <label> Task </label> <select name="task">
+          <option value="0">&nbsp;</option>
+          <option value="1">Project Draft 1</option>
+          <option value="2">Quiz 1</option>
+          <option value="3">Beach Walk</option>
+          <option value="4">Chase Sapphire Bill</option>
+        </select>
+        <label> name </label> <input type="text" name="name">
+        <label> description </label> <input type="text" name="description">
+        <label> deadline </label> <input type="text" name="deadline">
+        <label> priorityLevel </label> <select name="priorityLevel">
+          <option value="0">&nbsp;</option>
+          <option value="1">Optional</option>
+          <option value="2">Low</option>
+          <option value="3">Medium</option>
+          <option value="4">High</option>
+          <option value="5">Critical</option>
+        </select>
+      </fieldset>
+      <input class="btn" type="submit" id="addSubtask" value="Add Subtask">
+      <input class="btn" type="button" value="cancel" onClick="browseSubtasks()">
+    </form>
+  </div><!-- insert -->
+  <p>&nbsp;</p>
+  <div id="update">
+    <form method="POST" id="UpdateSubtask">
+      <legend><strong>Update Subtask</strong></legend>
+      <fieldset class="fields">
+        <input type="hidden" name="subtaskID" id="updatesubtaskID" value="1">
+        <label> taskID: </label> 2
+        <label> name </label> <input type="text" name="name" value="Read module 1">
+        <label> description </label> <input type="text" name="description" value="NULL">
+        <label> deadline </label> <input type="text" name="deadline" value="2023-03-05 11:59:59">
+        <label> priorityLevel </label> <select name="priorityLevel">
+          <option value="0">&nbsp;</option>
+          <option value="1">Optional</option>
+          <option value="2">Low</option>
+          <option value="3" selected>Medium</option>
+          <option value="4">High</option>
+          <option value="5">Critical</option>
+        </select>
+      </fieldset>
+      <input class="btn" type="submit" id="UpdateSaveSubtask" value="Save Update Subtask">
+      <input class="btn" type="button" value="cancel" onClick="browseSubtasks()">
+    </form>
+  </div><!-- update -->
+  <p>&nbsp;</p>
+  <div id="delete" style="display: block">
+    <form method="POST" id="deleteSubtask">
+      <legend><strong>Delete Subtask</strong></legend>
+      <fieldset class="fields">
+        <p>Are you sure you wish to delete the following?</p>
+        <input type="hidden" name="subtaskID" id="deletesubtaskID" value="1">
+        <label><strong>taskID:</strong></label> 2
+        <label> <strong>name</strong> </label> Read module 1
+
+      </fieldset>
+      <input class="btn" type="submit" id="DeleteSubtask" value="Delete Subtask">
+      <input class="btn" type="button" value="cancel" onClick="browseSubtasks()">
+    </form>
+  </div><!-- delete -->
+
+</body>
+
+</html>
