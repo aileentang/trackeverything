@@ -10,72 +10,127 @@ PORT = 64052;
 // Database
 var db = require('./db-connector')
 
- // Define our queries
- query1 = 'SELECT * FROM Subtasks;';
- query2 = 'SELECT * FROM Tasks;';
-
- // Execute every query in an asynchronous manner, we want each query to finish before the next one starts
-
 const selectAllQuery = (table) => {
-    let queryParam = `SELECT * FROM ${table}`;
+    let queryParam = `SELECT * FROM ${table};`;
     db.pool.query(queryParam, (err, results, fields) => {
         console.log(results);
     });
 }
 
-const insertQuery = (objParams, table) => {
-    // objParams = array of parameters
-    let newValue = "("
-    for (let i = 0; i < objParams.length; i++) {
-        newValue += objParams[i]
-        newValue += ","
-    }
-    newValue += ");"
-    let queryParam = `INSERT INTO ${table.toUpperCase()} VALUES ${newValue}`;
+const selectItemQuery = (selectParams, table) => {
+    // selectParams is a JS Object and contains
+    // key-value pairs for item to select 
+    let = generateSelectParam(selectParams);
+
+    let queryParam = `SELECT * FROM ${table} where ${selectParamString};`;
     db.pool.query(queryParam, (err, results, fields) => {
-        console.log(results)
+        console.log(results);
+        return results;
     });
 }
 
-const updateQuery = (objParams, selectParams, table) => {
-    // objParams = Javascript object, 
-    // key-value pairs for conditions to change
-    // key-value pairs for item to select 
-    let valuesToChange = "";
-    for (const key in objParams) {
-        valuestoChange += `${key} = ${objParams[key]}`;
-        valuestoChange += ",";
-    }
-    // Remove last comma
-    valuesToChange = valuesToChange.slice(-1);
+const insertQuery = (insertObject, table) => {
+    // objParams = array of argument
+    insertParams = Object.keys(insertObject);
+    insertInfo = Object.keys(insertObject).map(key => insertObject[key]);
+    let insertParamsString = generateInsertParam(insertParams);
+    let insertInfoString = generateInsertParam(insertInfo);
+    let queryParam = `INSERT INTO ${table} ${insertParamsString} VALUES ${insertInfoString};`;
+    db.pool.query(queryParam, (err, results, fields) => {
+        console.log(results)
+        return results;
+    });
+}
 
-    let itemsToSelect = "";
-    for (const key in selectParams) {
-        itemsToSelect += `${key} = ${selectParams[key]}`;
-        itemsToSelect += ",";
-    }
-    // Remove last comma
-    itemsToSelect = itemsToSelect.slice(-1);
+const updateQuery = (updateParams, selectParams, table) => {
+    // objParams is a JS Object and contains key-value pairs for conditions to change
+    // selectParams is a JS Object and contains key-value pairs for item to select 
+    let updateParamString = generateUpdateParam(updateParams);
+    let selectParamString = generateSelectParam(selectParams);
 
-    console.log(`valuesToChange: ${valuesToChange}`)
-    let queryParam = `UPDATE ${table.toUpperCase()} SET ${valuesToChange} WHERE ${itemsToSelect}`;
+    console.log(`objParamString: ${objParamString}`)
+    console.log(`selectParamString: ${selectParamString}`)
+
+    let queryParam = `UPDATE ${table} SET ${objParamString} WHERE ${updateParamString};`;
     console.log(queryParam);
     db.pool.query(queryParam, (err, results, fields) => {
         console.log(results);
+        return results;
     });
 }
 
 const deleteQuery = (selectParams, table) => {
-    let itemsToSelect = "";
+    let selectParamString = "";
     for (const key in selectParams) {
-        itemsToSelect += `${key} = ${selectParams[key]}`;
-        itemsToSelect += ",";
+        selectParamString += `${key} = ${selectParams[key]}`;
+        selectParamString += ",";
     }
     // Remove last comma
-    itemsToSelect = itemsToSelect.slice(-1);
+    selectParamString = selectParamString.slice(-1);
 
-    let queryParam = `DELETE FROM ${table.toUpperCase()} WHERE ${selectParam}`;
+    let queryParam = `DELETE FROM ${table} WHERE ${selectParamString};`;
     db.pool.query(queryParam, (err, results, fields) => {
         console.log(results);
+        return results;
     });
 }
+
+/*
+* Generate Functions
+*/
+
+const generateSelectParam = (selectParams) => {
+    let selectParamString = "";
+    for (const key in selectParams) {
+        if (typeof selectParams[key] == "string" || typeof selectParams[key] == "object") {
+            selectParamString += `${key} = '${selectParams[key]}'`;
+            selectParamString += ",";
+        }
+        else {
+            // No quotations needed for int queries
+            selectParamString += `${key} = ${selectParams[key]}`;
+            selectParamString += ",";
+        }
+    }
+    // Remove last comma
+    selectParamString = selectParamString.slice(-1);
+    return selectParamsString;
+}
+
+const generateUpdateParam = (updateParams) => {
+    let updateParamString = "";
+    for (const key in updateParams) {
+        updateParams += `${key} = ${updateParams[key]}`;
+        updateParams += ",";
+    }
+    // Remove last comma
+    updateParamString = updateParamString.slice(-1);
+    return updateParamString;
+}
+
+const generateInsertParam = (insertParam) => {
+    let insertParamString = "("
+    for (let i = 0; i < insertParam.length; i++) {
+        insertParamString += insertParam[i]
+        insertParamString += ","
+    }
+    insertParamString = insertParamString.slice(-1);
+    insertParamString += ")"
+    return insertParamString;
+}
+
+/*
+ // DROP TABLE...
+ db.pool.query(query1, function (err, results, fields){
+     console.log(results)
+
+     // CREATE TABLE...
+     db.pool.query(query2, function(err, results, fields){
+         console.log(results)
+
+         // Send the results to the browser
+         let base = "<h1>MySQL Results:</h1>"
+         res.send(base + JSON.stringify(results));
+     });
+ });
+ */
