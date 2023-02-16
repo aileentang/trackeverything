@@ -9,12 +9,10 @@ SET AUTOCOMMIT = 0;
 -- Make sure you UNCHECK 'Enable foreign key checks' if you are copying and pasting the SQL into phpMyAdmin. 
 -- If you don't, it won't import properly! 
 -- phpMyAdmin doesn't like creating the foreign key constraints at the same time as the table. 
--- If you do `source DDL.sql` from the command line it will be fine.
 
 --
 -- Table structure for table `Users`
 --
-
 CREATE OR REPLACE TABLE Users(
     userID INT(20) NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL, 
@@ -26,7 +24,6 @@ CREATE OR REPLACE TABLE Users(
 --
 -- Table structure for table `Tasks`
 --
-
 CREATE OR REPLACE TABLE Tasks(
     taskID INT(20) NOT NULL AUTO_INCREMENT,
     userID INT(20) NOT NULL,
@@ -43,7 +40,6 @@ CREATE OR REPLACE TABLE Tasks(
 --
 -- Table structure for table `Subtasks`
 --
-
 CREATE OR REPLACE TABLE Subtasks(
     subtaskID INT(20) NOT NULL AUTO_INCREMENT,
     taskID INT(20) NOT NULL,
@@ -60,7 +56,6 @@ CREATE OR REPLACE TABLE Subtasks(
 --
 -- Table structure for table `Teammates`
 --
-
 CREATE OR REPLACE TABLE Teammates(
     teammateID INT(20) NOT NULL AUTO_INCREMENT,
     userID INT(20) NOT NULL,
@@ -76,7 +71,6 @@ CREATE OR REPLACE TABLE Teammates(
 --
 -- Table structure for table `Categories`
 --
-
 CREATE OR REPLACE TABLE Categories(
     categoryID INT(20) NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
@@ -91,7 +85,6 @@ CREATE OR REPLACE TABLE Categories(
 --
 -- Table structure for table `TaskAndTeammates`
 --
-
 CREATE OR REPLACE TABLE TaskAndTeammates(
     taskID int,
     teammateID int,
@@ -105,7 +98,6 @@ CREATE OR REPLACE TABLE TaskAndTeammates(
 --
 -- Table structure for table `SubtaskAndTeammates`
 --
-
 CREATE OR REPLACE TABLE SubtaskAndTeammates(
     subtaskID int,
     teammateID int,
@@ -119,7 +111,6 @@ CREATE OR REPLACE TABLE SubtaskAndTeammates(
 --
 -- Table structure for table `TaskAndCategories`
 --
-
 CREATE OR REPLACE TABLE TaskAndCategories(
     taskID int,
     categoryID int,
@@ -133,7 +124,6 @@ CREATE OR REPLACE TABLE TaskAndCategories(
 --
 -- Table structure for table `SubtaskAndCategories`
 --
-
 CREATE OR REPLACE TABLE SubtaskAndCategories(
     subtaskID int,
     categoryID int,
@@ -151,7 +141,6 @@ CREATE OR REPLACE TABLE SubtaskAndCategories(
 --
 -- Dumping data for table `Users`
 --
-
 INSERT INTO Users (name, email) VALUES 
     ("Momo", "babygirlmomo@gmail.com"),
     ("Aileen", "tangai@oregonstate.edu"),
@@ -161,7 +150,6 @@ INSERT INTO Users (name, email) VALUES
 --
 -- Dumping data for table `Tasks`
 --
-
 INSERT INTO Tasks (userID, name, description, deadline, priorityLevel) VALUES 
     (2, "Project Draft 1", "Step 1 draft", "2023-03-07 11:59:59", "Low"),
     (2, "Quiz 1", "Relational DB and design", "2023-03-13 11:59:59", "Medium"),
@@ -179,7 +167,6 @@ INSERT INTO Subtasks (taskID, name, description, priorityLevel, deadline) VALUES
 --
 -- Dumping data for table `Teammates`
 --
-
 INSERT INTO Teammates (userID, name, email, phone) VALUES 
     (4, "Jacob", "jacob@gmail.com", "3104356709"), 
     (2, "John", "john@gmail.com", "6267809120"), 
@@ -197,7 +184,6 @@ INSERT INTO Categories (name, description, userID) VALUES
 --
 -- Dumping data for table `TaskAndTeammates`
 --
-
 INSERT INTO TaskAndTeammates (taskID, teammateID) VALUES 
     (1, 2), 
     (2, 2), 
@@ -206,7 +192,6 @@ INSERT INTO TaskAndTeammates (taskID, teammateID) VALUES
 --
 -- Dumping data for table `SubtaskAndTeammates`
 --
-
 INSERT INTO SubtaskAndTeammates (subtaskID, teammateID) VALUES 
     (1, 3), 
     (3, 3), 
@@ -215,7 +200,6 @@ INSERT INTO SubtaskAndTeammates (subtaskID, teammateID) VALUES
 --
 -- Dumping data for table `TaskAndCategories`
 --
-
 INSERT INTO TaskAndCategories (taskID, categoryID) VALUES 
     (1, 1), 
     (2, 2), 
