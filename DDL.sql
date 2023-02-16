@@ -88,8 +88,8 @@ CREATE OR REPLACE TABLE Categories(
 -- Table structure for table `TaskAndTeammates`
 --
 CREATE OR REPLACE TABLE TaskAndTeammates(
-    taskID int,
-    teammateID int,
+    taskID INT(20),
+    teammateID INT(20),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
     FOREIGN KEY (teammateID) REFERENCES Teammates(teammateID)
@@ -101,8 +101,8 @@ CREATE OR REPLACE TABLE TaskAndTeammates(
 -- Table structure for table `SubtaskAndTeammates`
 --
 CREATE OR REPLACE TABLE SubtaskAndTeammates(
-    subtaskID int,
-    teammateID int,
+    subtaskID INT(20),
+    teammateID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
     ON DELETE CASCADE,
     FOREIGN KEY (teammateID) REFERENCES Teammates(teammateID)
@@ -114,8 +114,8 @@ CREATE OR REPLACE TABLE SubtaskAndTeammates(
 -- Table structure for table `TaskAndCategories`
 --
 CREATE OR REPLACE TABLE TaskAndCategories(
-    taskID int,
-    categoryID int,
+    taskID INT(20),
+    categoryID INT(20),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
     FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
@@ -127,8 +127,8 @@ CREATE OR REPLACE TABLE TaskAndCategories(
 -- Table structure for table `SubtaskAndCategories`
 --
 CREATE OR REPLACE TABLE SubtaskAndCategories(
-    subtaskID int,
-    categoryID int,
+    subtaskID INT(20),
+    categoryID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
     ON DELETE CASCADE,
     FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
