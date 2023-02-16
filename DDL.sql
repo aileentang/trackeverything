@@ -11,6 +11,7 @@ SET AUTOCOMMIT = 0;
 -- phpMyAdmin doesn't like creating the foreign key constraints at the same time as the table. 
 -- If you `source DDL.sql` from CLI it works fine.
 
+
 --
 -- Table structure for table `Users`
 --
@@ -74,9 +75,9 @@ CREATE OR REPLACE TABLE Teammates(
 --
 CREATE OR REPLACE TABLE Categories(
     categoryID INT(20) NOT NULL AUTO_INCREMENT,
+    userID INT(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
-    userID INT(20) NOT NULL,
     constraint UNIQUE(categoryID),
     FOREIGN KEY (userID) REFERENCES Users(userID)
     ON DELETE CASCADE,
