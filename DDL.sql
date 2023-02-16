@@ -111,6 +111,8 @@ CREATE OR REPLACE TABLE Teammates(
     name VARCHAR(50) NOT NULL,
     email VARCHAR(100),
     phone VARCHAR(12),
+    FOREIGN KEY (userID) REFERENCES Users(userID)
+    ON DELETE CASCADE,
     constraint UNIQUE(teammateID),
     PRIMARY KEY (teammateID)
 );
