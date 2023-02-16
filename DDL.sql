@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=1;
 SET AUTOCOMMIT = 0;
 -- Project Step 3 Draft
 -- Aileen Tang and Jennifer Hoang
---
+
 -- Host: mysql.eecs.oregonstate.edu    Database: `cs340_hoangje`
 
 -- !!!!!!IMPORTANT!!!!!!!
