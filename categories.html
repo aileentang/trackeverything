@@ -102,6 +102,13 @@
     <form method="POST" id="addCategory">
       <legend><strong>Add Category</strong></legend>
       <fieldset class="fields">
+        <label> User </label> <select name="user">
+          <option value="0">&nbsp;</option>
+          <option value="1">Momo</option>
+          <option value="2">Aileen</option>
+          <option value="3">Catherine</option>
+          <option value="4">Jennifer</option>
+        </select>
         <label> name </label> <input type="text" name="name">
         <label> description </label> <input type="text" name="email">
       </fieldset>
@@ -116,7 +123,8 @@
     <form method="POST" id="updateCategory">
       <legend><strong>Update Category</strong></legend>
       <fieldset class="fields">
-        <label>ID:</label> 1
+        <label>categoryID:</label> 1
+        <label>userID:</label> 2
         <label> name </label> <input type="text" value="project" name="name">
         <label> description </label> <input type="text" name="description" value="Group project for class">
       </fieldset>
