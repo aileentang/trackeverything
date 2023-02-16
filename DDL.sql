@@ -62,6 +62,8 @@ CREATE OR REPLACE TABLE Categories(
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
     constraint UNIQUE(categoryID),
+    FOREIGN KEY (userID) REFERENCES Users(userID)
+    ON DELETE CASCADE,
     PRIMARY KEY (categoryID)
 );
 
