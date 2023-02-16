@@ -41,8 +41,8 @@
       }
     }
     function newSubtask() { showform('insert'); }
-    function updateSubtask(tid) { showform('update'); }
-    function deleteTask(tid) { showform('delete'); }
+    function updateSubtask(sid) { showform('update'); }
+    function deleteSubtask(sid) { showform('delete'); }
     function browseSubtasks() { showform('browse'); }
     function showAll() { showform('all'); }
   </script>
@@ -155,7 +155,7 @@
       <legend><strong>Delete Subtask</strong></legend>
       <fieldset class="fields">
         <p>Are you sure you wish to delete the following?</p>
-        <input type="hidden" name="subtaskID" id="deletesubtaskID" value="1">
+        <input type="hidden" name="subtaskID" id="deletesubtaskID" value="2">
         <label><strong>taskID:</strong></label> 2
         <label> <strong>name</strong> </label> Read module 1
 
