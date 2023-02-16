@@ -9,6 +9,7 @@ SET AUTOCOMMIT = 0;
 -- Make sure you UNCHECK 'Enable foreign key checks' if you are copying and pasting the SQL into phpMyAdmin. 
 -- If you don't, it won't import properly! 
 -- phpMyAdmin doesn't like creating the foreign key constraints at the same time as the table. 
+-- If you `source DDL.sql` from CLI it works fine.
 
 --
 -- Table structure for table `Users`
