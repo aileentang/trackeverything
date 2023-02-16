@@ -4,9 +4,11 @@ SET AUTOCOMMIT = 0;
 -- Aileen Tang and Jennifer Hoang
 --
 -- Host: mysql.eecs.oregonstate.edu    Database: `cs340_hoangje`
--- 
--- IMPORTANT: Make sure you uncheck 'Enable foreign key checks' if you are copying and pasting the SQL into phpMyAdmin. 
+
+-- !!!!!!IMPORTANT!!!!!!!
+-- Make sure you UNCHECK 'Enable foreign key checks' if you are copying and pasting the SQL into phpMyAdmin. 
 -- If you don't, it won't import properly! 
+-- phpMyAdmin doesn't like creating the foreign key constraints at the same time as the table. 
 
 --
 -- Table structure for table `Users`
