@@ -3,9 +3,52 @@
 <head>
   <title>Track Everything</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script language="JavaScript">
+    function showform(dowhat) {
+      /*
+      * four DIVS: browse, insert, update, delete
+      * this function sets one visible the others not
+      */
+      if (dowhat == 'insert') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'update') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'delete') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else if (dowhat == 'all') {
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else { //by default display browse
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+    }
+    function newTeammate() { showform('insert'); }
+    function updateTeammate(tid) { showform('update'); }
+    function deleteTeammate(tid) { showform('delete'); }
+    function browseTeammates() { showform('browse'); }
+    function showAll() { showform('all'); }
+  </script>
 </head>
 
-<body>
+<body onload="browseTeammates()">
   <h1>Teammates</h1>
 
   [ <a href="index.html">Tasks</a> | <a href="users.html">Users</a> | <a href="categories.html">Categories</a> | <a href="subtasks.html">Subtasks</a> | <a href="teammates.html">Teammates</a> ]
@@ -13,32 +56,36 @@
     <p><strong>Browse Teammates</strong></p>
     <table border="1" cellpadding="5">
       <tr>
-        <th><a href="#">New</a></th>
+        <th><a href="#" onclick="newTeammate()">New</a></th>
         <th></th>
         <th>teammateID</th>
+        <th>userID</th>
         <th>name</th>
         <th>email</th>
         <th>phone</th>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onclick="updateTeammate('this.teammateID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTeammate('this.teammateID')">Delete</a></td>
         <td align="right">1</td>
+        <td align="right">4</td>
         <td>Jacob</td>
         <td align="right">jacob@gmail.com</td>
         <td>310-435-6709</td>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onclick="updateTeammate('this.teammateID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTeammate('this.teammateID')">Delete</a></td>
+        <td align="right">2</td>
         <td align="right">2</td>
         <td>John</td>
         <td align="right">john@gmail.com</td>
         <td>626-780-9120</td>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onclick="updateTeammate('this.teammateID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTeammate('this.teammateID')">Delete</a></td>
+        <td align="right">3</td>
         <td align="right">3</td>
         <td>Ashley</td>
         <td align="right">ashley@gmail.com</td>
@@ -48,36 +95,43 @@
     <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert" style="display: block">
-    <form id="addTeammate">
+    <form method="POST" id="addTeammate">
       <legend><strong>Add Teammate</strong></legend>
       <fieldset class="fields">
+        <label> User </label> <select name="user">
+          <option value="0">&nbsp;</option>
+          <option value="1">Momo</option>
+          <option value="2">Aileen</option>
+          <option value="3">Catherine</option>
+          <option value="4">Jennifer</option>
         <label> name </label> <input type="text" name="name">
         <label> email </label> <input type="text" name="email">
         <label> phone </label> <input type="text" name="phone">
       </fieldset>
       <input class="btn" type="submit" id="addTeammate" value="Add a Teammate">
-      <input class="btn" type="button" value="cancel">
+      <input class="btn" type="button" value="cancel" onclick="browseTeammates()">
     </form>
     <!--add new teammate-->
   </div><!-- insert -->
 
   <p>&nbsp;</p>
   <div id="update" style="display: block">
-    <form id="updateTeammate">
+    <form method="POST" id="updateTeammate">
       <legend><strong>Update Teammate</strong></legend>
       <fieldset class="fields">
-        <label>ID:</label> 1
+        <label>teammateID:</label> 1
+        <label>userID:</label> 4
         <label> name </label> <input type="text" value="Jacob" name="name">
         <label> email </label> <input type="text" name="email" value="jacob@gmail.com">
         <label> phone </label> <input type="text" name="phone" value="310-435-6709">
       </fieldset>
       <input class="btn" type="submit" id="UpdateSaveTeammate" value="Save Update Teammate">
-      <input class="btn" type="button" value="cancel">
+      <input class="btn" type="button" value="cancel" onclick="browseTeammates()">
     </form>
   </div><!-- update -->
   <p>&nbsp;</p>
   <div id="delete" style="display: block">
-    <form id="deleteTeammate">
+    <form method="POST" id="deleteTeammate">
       <legend><strong>Delete Teammate</strong></legend>
       <fieldset class="fields">
         <p>Are you sure you wish to delete the following?</p>
@@ -86,7 +140,7 @@
 
       </fieldset>
       <input class="btn" type="submit" id="DeleteTeammate" value="Delete Teammate">
-      <input class="btn" type="button" value="cancel">
+      <input class="btn" type="button" value="cancel" onclick="browseTeammates()">
     </form>
   </div><!-- delete -->
 </body>
