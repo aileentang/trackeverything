@@ -187,11 +187,11 @@ INSERT INTO Teammates (userID, name, email, phone) VALUES
 --
 -- Dumping data for table `Categories`
 --
-INSERT INTO Categories (name, description) VALUES 
-    ("project", "Group project for class"), 
-    ("quiz", "Graded quizzes"), 
-    ("finance", "Financial management"),
-    ("events", NULL);
+INSERT INTO Categories (name, description, userID) VALUES 
+    ("project", "Group project for class", 2), 
+    ("quiz", "Graded quizzes", 4), 
+    ("finance", "Financial management", 4),
+    ("events", NULL, 2);
 
 --
 -- Dumping data for table `TaskAndTeammates`
@@ -228,6 +228,3 @@ INSERT INTO SubtaskAndCategories ( subtaskID, categoryID ) VALUES
     (1, 1), 
     (2, 4), 
     (3, 1);
-
-SET FOREIGN_KEY_CHECKS=1;
-COMMIT;
