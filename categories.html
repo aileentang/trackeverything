@@ -3,9 +3,52 @@
 <head>
   <title>Track Everything</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script language="JavaScript">
+    function showform(dowhat) {
+      /*
+      * four DIVS: browse, insert, update, delete
+      * this function sets one visible the others not
+      */
+      if (dowhat == 'insert') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'update') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'delete') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else if (dowhat == 'all') {
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else { //by default display browse
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+    }
+    function newCategory() { showform('insert'); }
+    function updateCategory(cid) { showform('update'); }
+    function deleteCategory(cid) { showform('delete'); }
+    function browseCategories() { showform('browse'); }
+    function showAll() { showform('all'); }
+  </script>
 </head>
 
-<body>
+<body onload="browseCategories()">
   <h1>Categories</h1>
 
   [ <a href="index.html">Tasks</a> | <a href="users.html">Users</a> | <a href="categories.html">Categories</a> | <a href="subtasks.html">Subtasks</a> | <a href="teammates.html">Teammates</a> ]
@@ -13,36 +56,36 @@
     <p><strong>Browse Categories</strong></p>
     <table border="1" cellpadding="5">
       <tr>
-        <th><a href="#">New</a></th>
+        <th><a href="#" onClick="newCategory()">New</a></th>
         <th></th>
         <th>categoryID</th>
         <th>name</th>
         <th>description</th>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onClick="updateCategory('this.categoryID')">Edit</a></td>
+        <td><a href="#" onClick="deleteCategory('this.categoryID')">Delete</a></td>
         <td align="right">1</td>
         <td>project</td>
         <td align="right">Group project for class</td>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onClick="updateCategory('this.categoryID')">Edit</a></td>
+        <td><a href="#" onClick="deleteCategory('this.categoryID')">Delete</a></td>
         <td align="right">2</td>
         <td>quiz</td>
         <td align="right">Graded quizzes</td>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onClick="updateCategory('this.categoryID')">Edit</a></td>
+        <td><a href="#" onClick="deleteCategory('this.categoryID')">Delete</a></td>
         <td align="right">3</td>
         <td>finance</td>
         <td align="right">Financial management</td>
       </tr>
       <tr>
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="#" onClick="updateCategory('this.categoryID')">Edit</a></td>
+        <td><a href="#" onClick="deleteCategory('this.categoryID')">Delete</a></td>
         <td align="right">4</td>
         <td>events</td>
         <td align="right">NULL</td>
@@ -51,21 +94,21 @@
     <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert" style="display: block">
-    <form id="addCategory">
+    <form method="POST" id="addCategory">
       <legend><strong>Add Category</strong></legend>
       <fieldset class="fields">
         <label> name </label> <input type="text" name="name">
         <label> description </label> <input type="text" name="email">
       </fieldset>
       <input class="btn" type="submit" id="addCategory" value="Add a Category">
-      <input class="btn" type="button" value="cancel">
+      <input class="btn" type="button" value="cancel" onClick="browseCategories()">
     </form>
     <!--add new category-->
   </div><!-- insert -->
 
   <p>&nbsp;</p>
   <div id="update" style="display: block">
-    <form id="updateCategory">
+    <form method="POST" id="updateCategory">
       <legend><strong>Update Category</strong></legend>
       <fieldset class="fields">
         <label>ID:</label> 1
@@ -73,12 +116,12 @@
         <label> description </label> <input type="text" name="description" value="Group project for class">
       </fieldset>
       <input class="btn" type="submit" id="UpdateSaveCategory" value="Save Update Category">
-      <input class="btn" type="button" value="cancel">
+      <input class="btn" type="button" value="cancel" onClick="browseCategories()">
     </form>
   </div><!-- update -->
   <p>&nbsp;</p>
   <div id="delete" style="display: block">
-    <form id="deleteCategory">
+    <form method="POST" id="deleteCategory">
       <legend><strong>Delete Category</strong></legend>
       <fieldset class="fields">
         <p>Are you sure you wish to delete the following?</p>
@@ -87,7 +130,7 @@
 
       </fieldset>
       <input class="btn" type="submit" id="DeleteCategory" value="Delete Category">
-      <input class="btn" type="button" value="cancel">
+      <input class="btn" type="button" value="cancel" onClick="browseCategories()">
     </form>
   </div><!-- delete -->
 </body>
