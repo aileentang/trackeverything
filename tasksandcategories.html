@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title>Track Everything</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+        function showform(dowhat) {
+            /*
+            * four DIVS: browse, insert, update, delete
+            * this function sets one visible the others not
+            */
+            if (dowhat == 'insert') {
+                document.getElementById('browse').style.display = 'none';
+                document.getElementById('insert').style.display = 'block';
+                document.getElementById('update').style.display = 'none';
+                document.getElementById('delete').style.display = 'none';
+            }
+            else if (dowhat == 'update') {
+                document.getElementById('browse').style.display = 'none';
+                document.getElementById('insert').style.display = 'none';
+                document.getElementById('update').style.display = 'block';
+                document.getElementById('delete').style.display = 'none';
+            }
+            else if (dowhat == 'delete') {
+                document.getElementById('browse').style.display = 'none';
+                document.getElementById('insert').style.display = 'none';
+                document.getElementById('update').style.display = 'none';
+                document.getElementById('delete').style.display = 'block';
+            }
+            else if (dowhat == 'all') {
+                document.getElementById('browse').style.display = 'block';
+                document.getElementById('insert').style.display = 'block';
+                document.getElementById('update').style.display = 'block';
+                document.getElementById('delete').style.display = 'block';
+            }
+            else { //by default display browse
+                document.getElementById('browse').style.display = 'block';
+                document.getElementById('insert').style.display = 'none';
+                document.getElementById('update').style.display = 'none';
+                document.getElementById('delete').style.display = 'none';
+            }
+        }
+        function newTaskAndTeammate() { showform('insert'); }
+        function updateTaskAndTeammate(ttid) { showform('update'); }
+        function deleteTaskAndTeammate(ttid) { showform('delete'); }
+        function browseTasksAndTeammates() { showform('browse'); }
+        function showAll() { showform('all'); }
+    </script>
+</head>
+
+<body onload="browseTasksAndTeammates()">
+    <h1>Tasks And Categories</h1>
+
+    [ <a href="index.html">Tasks</a> | <a href="users.html">Users</a> | <a href="categories.html">Categories</a> | <a
+        href="subtasks.html">Subtasks</a> | <a href="teammates.html">Teammates</a> ]
+
+    <br><br>[ <a href="tasksandteammates.html">TasksAndTeammates</a> | <a
+        href="subtasksandteammates.html">SubtasksAndTeammates</a> | <a
+        href="tasksandcategories.html">TasksAndCategories</a> | <a
+        href="subtasksandcategories.html">SubtasksAndCategories</a> ]
+
+    <div id="browse" style="display: block">
+        <p><strong>Browse Tasks and Categories</strong></p>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th><a href="#" onClick="newTaskAndTeammate()">New</a></th>
+                <th></th>
+                <th>taskID</th>
+                <th>categoryID</th>
+            </tr>
+            <tr>
+                <td><a href="#" onClick="updateTaskAndTeammate('this.taskandteammateID')">Edit</a></td>
+                <td><a href="#" onclick="deleteTaskAndTeammate('this.taskandteammateID')">Delete</a></td>
+                <td align="right">1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td><a href="#" onClick="updateTaskAndTeammate('this.taskandteammateID')">Edit</a></td>
+                <td><a href="#" onclick="deleteTaskAndTeammate('this.taskandteammateID')">Delete</a></td>
+                <td align="right">2</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td><a href="#" onClick="updateTaskAndTeammate('this.taskandteammateID')">Edit</a></td>
+                <td><a href="#" onclick="deleteTaskAndTeammate('this.taskandteammateID')">Delete</a></td>
+                <td align="right">3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><a href="#" onClick="updateTaskAndTeammate('this.taskandteammateID')">Edit</a></td>
+                <td><a href="#" onclick="deleteTaskAndTeammate('this.taskandteammateID')">Delete</a></td>
+                <td align="right">4</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <p>&nbsp;</p>
+    </div> <!-- browse -->
+    <div id="insert">
+        <form method="POST" id="addTaskAndTeammate">
+            <legend><strong>Add Tasks and Categories</strong></legend>
+            <fieldset class="fields">
+                <label> Task </label> <select name="user">
+                    <option value="0">&nbsp;</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <label> category </label> <input type="text" name="teammate">
+            </fieldset>
+            <input class="btn" type="submit" id="addTeammate" value="Add Category">
+            <input class="btn" type="button" value="cancel" onClick="browseTasksAndTeammates()">
+        </form>
+    </div><!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+        <form method="POST" id="updateTask">
+            <legend><strong>Update Category</strong></legend>
+            <fieldset class="fields">
+                <label> taskID: </label> 1
+                <label> categoryID </label> <input type="text" name="teammateID" value="2">
+            </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveTeammate" value="Save Update Category">
+            <input class="btn" type="button" value="cancel" onClick="browseTasksAndTeammates()">
+        </form>
+    </div><!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+        <form method="POST" id="deleteTaskAndTeammate">
+            <legend><strong>Delete Category</strong></legend>
+            <fieldset class="fields">
+                <p>Are you sure you wish to delete the following?</p>
+                <input type="hidden" name="teammateID" id="deleteteammateID" value="2">
+                <label><strong>taskID:</strong></label> 1
+                <label> <strong>categoryID</strong> </label> 2
+
+            </fieldset>
+            <input class="btn" type="submit" id="DeleteTeammate" value="Delete Category">
+            <input class="btn" type="button" value="cancel" onClick="browseTasksAndTeammates()">
+        </form>
+    </div><!-- delete -->
+
+</body>
+
+</html>
