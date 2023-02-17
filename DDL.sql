@@ -136,10 +136,10 @@ INSERT INTO Teammates (userID, name, email, phone) VALUES
     (3, "Ashley", "ashley@gmail.com", "6577083415");
 
 --
--- Table structure for table `TaskAndTeammates`
+-- Table structure for table `TasksAndTeammates`
 --
 
-CREATE OR REPLACE TABLE TaskAndTeammates(
+CREATE OR REPLACE TABLE TasksAndTeammates(
     taskID int,
     teammateID int,
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
@@ -150,19 +150,19 @@ CREATE OR REPLACE TABLE TaskAndTeammates(
 );
 
 --
--- Dumping data for table `TaskAndTeammates`
+-- Dumping data for table `TasksAndTeammates`
 --
 
-INSERT INTO TaskAndTeammates (taskID, teammateID) VALUES 
+INSERT INTO TasksAndTeammates (taskID, teammateID) VALUES 
     (1, 2), 
     (2, 2), 
     (2, 3);
 
 --
--- Table structure for table `SubtaskAndTeammates`
+-- Table structure for table `SubtasksAndTeammates`
 --
 
-CREATE OR REPLACE TABLE SubtaskAndTeammates(
+CREATE OR REPLACE TABLE SubtasksAndTeammates(
     subtaskID int,
     teammateID int,
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -173,19 +173,19 @@ CREATE OR REPLACE TABLE SubtaskAndTeammates(
 );
 
 --
--- Dumping data for table `SubtaskAndTeammates`
+-- Dumping data for table `SubtasksAndTeammates`
 --
 
-INSERT INTO SubtaskAndTeammates (subtaskID, teammateID) VALUES 
+INSERT INTO SubtasksAndTeammates (subtaskID, teammateID) VALUES 
     (1, 3), 
     (3, 3), 
     (3, 2);
 
 --
--- Table structure for table `TaskAndCategories`
+-- Table structure for table `TasksAndCategories`
 --
 
-CREATE OR REPLACE TABLE TaskAndCategories(
+CREATE OR REPLACE TABLE TasksAndCategories(
     taskID int,
     categoryID int,
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
@@ -196,20 +196,20 @@ CREATE OR REPLACE TABLE TaskAndCategories(
 );
 
 --
--- Dumping data for table `TaskAndCategories`
+-- Dumping data for table `TasksAndCategories`
 --
 
-INSERT INTO TaskAndCategories (taskID, categoryID) VALUES 
+INSERT INTO TasksAndCategories (taskID, categoryID) VALUES 
     (1, 1), 
     (2, 2), 
     (3, 4), 
     (4, 3);
 
 --
--- Table structure for table `SubtaskAndCategories`
+-- Table structure for table `SubtasksAndCategories`
 --
 
-CREATE OR REPLACE TABLE SubtaskAndCategories(
+CREATE OR REPLACE TABLE SubtasksAndCategories(
     subtaskID int,
     categoryID int,
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -220,10 +220,10 @@ CREATE OR REPLACE TABLE SubtaskAndCategories(
 );
 
 --
--- Dumping data for table `SubtaskAndCategories`
+-- Dumping data for table `SubtasksAndCategories`
 --
 
-INSERT INTO SubtaskAndCategories ( subtaskID, categoryID ) VALUES 
+INSERT INTO SubtasksAndCategories ( subtaskID, categoryID ) VALUES 
     (1, 1), 
     (2, 4), 
     (3, 1);
