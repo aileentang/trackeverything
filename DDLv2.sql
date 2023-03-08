@@ -135,11 +135,6 @@ CREATE OR REPLACE TABLE SubtasksAndCategories(
     PRIMARY KEY (subtaskID, categoryID)
 );
 
-
------------------
--- INSERT DATA --
------------------
- 
 --
 -- Dumping data for table `Users`
 --
