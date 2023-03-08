@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS=0;
-SET AUTOCOMMIT = 0;
 -- Project Step 3 Draft
 -- Aileen Tang and Jennifer Hoang
 --
@@ -320,6 +318,3 @@ INSERT INTO SubtasksAndCategories ( subtaskID, categoryID ) VALUES
     (15, 9),
     (16, 9),
     (16, 10);
-
-SET FOREIGN_KEY_CHECKS=1;
-COMMIT;
