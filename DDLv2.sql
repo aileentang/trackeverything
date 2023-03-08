@@ -14,7 +14,6 @@ SET AUTOCOMMIT = 0;
 --
 -- Table structure for table `Users`
 --
-
 CREATE OR REPLACE TABLE Users(
     userID INT(20) NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL, 
@@ -26,7 +25,6 @@ CREATE OR REPLACE TABLE Users(
 --
 -- Table structure for table `Tasks`
 --
-
 CREATE OR REPLACE TABLE Tasks(
     taskID INT(20) NOT NULL AUTO_INCREMENT,
     userID INT(20) NOT NULL,
@@ -43,7 +41,6 @@ CREATE OR REPLACE TABLE Tasks(
 --
 -- Table structure for table `Subtasks`
 --
-
 CREATE OR REPLACE TABLE Subtasks(
     subtaskID INT(20) NOT NULL AUTO_INCREMENT,
     taskID INT(20) NOT NULL,
@@ -60,7 +57,6 @@ CREATE OR REPLACE TABLE Subtasks(
 --
 -- Table structure for table `Teammates`
 --
-
 CREATE OR REPLACE TABLE Teammates(
     teammateID INT(20) NOT NULL AUTO_INCREMENT,
     userID INT(20) NOT NULL,
@@ -76,7 +72,6 @@ CREATE OR REPLACE TABLE Teammates(
 --
 -- Table structure for table `Categories`
 --
-
 CREATE OR REPLACE TABLE Categories(
     categoryID INT(20) NOT NULL AUTO_INCREMENT,
     userID INT(20) NOT NULL,
@@ -89,26 +84,24 @@ CREATE OR REPLACE TABLE Categories(
 );
 
 --
--- Table structure for table `TasksAndTeammates`
+-- Table structure for table `TaskAndTeammates`
 --
-
 CREATE OR REPLACE TABLE TasksAndTeammates(
-    taskID int,
-    teammateID int,
+    taskID INT(20),
+    teammateID INT(20),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
     FOREIGN KEY (teammateID) REFERENCES Teammates(teammateID)
     ON DELETE CASCADE,
     PRIMARY KEY (taskID, teammateID)
-);∂
+);
 
 --
--- Table structure for table `SubtasksAndTeammates`
+-- Table structure for table `SubtaskAndTeammates`
 --
-
 CREATE OR REPLACE TABLE SubtasksAndTeammates(
-    subtaskID int,
-    teammateID int,
+    subtaskID INT(20),
+    teammateID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
     ON DELETE CASCADE,
     FOREIGN KEY (teammateID) REFERENCES Teammates(teammateID)
@@ -117,12 +110,11 @@ CREATE OR REPLACE TABLE SubtasksAndTeammates(
 );
 
 --
--- Table structure for table `TasksAndCategories`
+-- Table structure for table `TaskAndCategories`
 --
-
 CREATE OR REPLACE TABLE TasksAndCategories(
-    taskID int,
-    categoryID int,
+    taskID INT(20),
+    categoryID INT(20),
     FOREIGN KEY (taskID) REFERENCES Tasks(taskID)
     ON DELETE CASCADE,
     FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
@@ -131,12 +123,11 @@ CREATE OR REPLACE TABLE TasksAndCategories(
 );
 
 --
--- Table structure for table `SubtasksAndCategories`
+-- Table structure for table `SubtaskAndCategories`
 --
-
-CREATE OR REPLACE TABLE SubtasksAndCategories(
-    subtaskID int,
-    categoryID int,
+CREATE OR REPLACE TABLE SubtaskAndCategories(
+    subtaskID INT(20),
+    categoryID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
     ON DELETE CASCADE,
     FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
@@ -206,7 +197,7 @@ INSERT INTO Subtasks (taskID, name, description, deadline, priorityLevel) VALUES
     (13, "Subtask 14", NULL, "2023-03-14 11:59:59", "Optional"),
     (17, "Subtask 15", "Description for Subtask 15", "2023-03-15 11:59:59", "Low"),  
     (17, "Subtask 16", "Description for Subtask 16 ", "2023-03-16 11:59:59", "Medium"),
-    (17, "Subtask 17", NULL, "2023-03-17 11:59:59", "High")
+    (17, "Subtask 17", NULL, "2023-03-17 11:59:59", "High");
 
 --
 -- Dumping data for table `Teammates`
@@ -214,15 +205,15 @@ INSERT INTO Subtasks (taskID, name, description, deadline, priorityLevel) VALUES
 
 INSERT INTO Teammates (userID, name, email, phone) VALUES 
     (1, "Teammate1", 'teammate1@gmail.com', "1111111111"),
-    (2, "Teammate2", NULL, "2222222222"),
-    (3, "Teammate3", 'teammate3@gmail.com', NULL),
-    (4, "Teammate4", 'teammate4@gmail.com', "4444444444"),
-    (5, "Teammate5", NULL, "5555555555"),
-    (6, "Teammate6", 'teammate6@gmail.com', NULL),
-    (7, "Teammate7", 'teammate7@gmail.com', "7777777777"),
-    (8, "Teammate8", NULL, "8888888888"),
-    (9, "Teammate9", 'teammate9@gmail.com', NULL),
-    (10, "Teammate10", NULL, NULL);
+    (1, "Teammate2", NULL, "2222222222"),
+    (2, "Teammate3", 'teammate3@gmail.com', NULL),
+    (2, "Teammate4", 'teammate4@gmail.com', "4444444444"),
+    (3, "Teammate5", NULL, "5555555555"),
+    (3, "Teammate6", 'teammate6@gmail.com', NULL),
+    (4, "Teammate7", 'teammate7@gmail.com', "7777777777"),
+    (4, "Teammate8", NULL, "8888888888"),
+    (5, "Teammate9", 'teammate9@gmail.com', NULL),
+    (5, "Teammate10", NULL, NULL);
 
 --
 -- Dumping data for table `Categories`
