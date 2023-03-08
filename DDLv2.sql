@@ -125,7 +125,7 @@ CREATE OR REPLACE TABLE TasksAndCategories(
 --
 -- Table structure for table `SubtaskAndCategories`
 --
-CREATE OR REPLACE TABLE SubtaskAndCategories(
+CREATE OR REPLACE TABLE SubtasksAndCategories(
     subtaskID INT(20),
     categoryID INT(20),
     FOREIGN KEY (subtaskID) REFERENCES Subtasks(subtaskID)
@@ -271,13 +271,13 @@ INSERT INTO SubtasksAndTeammates (subtaskID, teammateID) VALUES
     (6, 3),
     (6, 4),
     (9, 5),
-    (10, 6),
+    (10, 5),
     (10, 6),
     (12, 7),
-    (13, 8),
+    (13, 7),
     (13, 8),
     (15, 9),
-    (16, 10),
+    (16, 9),
     (16, 10);
 
 
@@ -293,20 +293,16 @@ INSERT INTO TasksAndCategories (taskID, categoryID) VALUES
     (5, 3),
     (6, 4),
     (7, 4),
-    (8, NULL),
     (9, 5),
     (10, 5),
     (11, 6),
-    (12, NULL),
     (13, 7),
     (13, 8),
     (14, 7),
     (15, 8),
-    (16, NULL),
     (17, 9),
-    (18, 10),
-    (19, NULL),
-    (20, NULL);
+    (18, 10);
+
 
 
 --
@@ -325,7 +321,7 @@ INSERT INTO SubtasksAndCategories ( subtaskID, categoryID ) VALUES
     (10, 6),
     (12, 8),
     (13, 7),
-    (13, 7),
+    (13, 8),
     (15, 9),
     (16, 9),
     (16, 10);
