@@ -72,7 +72,7 @@ CREATE OR REPLACE TABLE Teammates(
 --
 CREATE OR REPLACE TABLE Categories(
     categoryID INT(20) NOT NULL AUTO_INCREMENT,
-    userID INT(20) NOT NULL,
+    userID INT(20),
     name VARCHAR(50) NOT NULL,
     description VARCHAR(500),
     constraint UNIQUE(categoryID),
