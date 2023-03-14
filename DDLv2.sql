@@ -59,7 +59,7 @@ CREATE OR REPLACE TABLE Teammates(
     teammateID INT(20) NOT NULL AUTO_INCREMENT,
     userID INT(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
-    email VARCHAR(100),
+    email VARCHAR(50),
     phone VARCHAR(12),
     FOREIGN KEY (userID) REFERENCES Users(userID)
     ON DELETE CASCADE,
