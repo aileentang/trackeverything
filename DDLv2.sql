@@ -1,6 +1,6 @@
 -- CS 340 Project Step 6
 -- Aileen Tang and Jennifer Hoang
--- Description: Data definitionn queries file that creates tables and data relating to our project schema.
+-- Description: Data definition queries file that creates tables and data relating to our project schema.
 -- Host: mysql.eecs.oregonstate.edu    Database: `cs340_hoangje`
 
 -- !!!!!!IMPORTANT!!!!!!!
