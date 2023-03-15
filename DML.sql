@@ -1,3 +1,8 @@
+-- Citation for: DML.sql
+-- Date: 03/14/23
+-- Adapted from: CS 340 Canvas modules
+-- source URL: canvas.oregonstate.edu
+--
 -- CS 340 Project Step 6
 -- Aileen Tang and Jennifer Hoang
 -- Description: These are some Database Manipulation queries for our Project Website using the tracking database.
