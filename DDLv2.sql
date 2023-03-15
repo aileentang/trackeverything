@@ -1,3 +1,8 @@
+-- Citation for: DDL.sql
+-- Date: 03/14/23
+-- Adapted from: CS 340 Canvas modules
+-- source URL: canvas.oregonstate.edu
+--
 -- CS 340 Project Step 6
 -- Aileen Tang and Jennifer Hoang
 -- Description: Data definition queries file that creates tables and data relating to our project schema.
