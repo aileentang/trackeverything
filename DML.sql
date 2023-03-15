@@ -1,5 +1,6 @@
--- These are some Database Manipulation queries for a partially implemented Project Website 
--- using the tracking database.
+-- CS 340 Project Step 6
+-- Aileen Tang and Jennifer Hoang
+-- Description: These are some Database Manipulation queries for our Project Website using the tracking database.
 
 -- get all users to populate User dropdown
 SELECT userID, name FROM Users;
