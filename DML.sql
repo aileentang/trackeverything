@@ -89,11 +89,10 @@ INSERT INTO Categories (userID, name, description) VALUES
 INSERT INTO Subtasks (taskID, name, description, deadline, priorityLevel) VALUES
     (:taskIDInput, :nameInput, :descriptionInput, :deadlineInput, :priorityLevelInput);
 
--- update a task's data
-UPDATE Tasks
-    SET name = :nameInput, description = :descriptionInput,
-        deadline = :deadlineInput, priorityLevel = :priorityLevelInput
-    WHERE taskID = :task_ID_from_update_form;
+-- update a category's data
+UPDATE Categories
+    SET name = :nameInput, description = :descriptionInput
+    WHERE categoryID = :category_ID_from_update_form;
 
 -- delete a task
 DELETE FROM Tasks WHERE taskID = :task_ID_selected;
